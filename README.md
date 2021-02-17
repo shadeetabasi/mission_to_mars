@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Web Scraping Homework - Mission to Mars
 
 ![mission_to_mars](Images/mission_to_mars.png)
@@ -118,3 +119,6 @@ To submit your work to BootCampSpot, create a new GitHub repository and upload t
 ### Copyright
 
 Trilogy Education Services © 2020. All Rights Reserved.
+=======
+# Mission to Mars
+>>>>>>> ae766aecf2c3e9441535e70bc979fe14bdaa4713
