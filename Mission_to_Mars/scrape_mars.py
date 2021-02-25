@@ -16,18 +16,16 @@ def scrape():
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
 
-    time.sleep(1)
-
     #create html object and parse with bs
     html = browser.html
     soup = bs(html, "html.parser")
 
     ## 1. LATEST MARS NEWS: scrape Mars latest news and snippeets and isolate most recent title + paragraph
-    titles = soup.find_all("div", {"class":'content_title'}).text
+    titles = soup.find_all("div", {"class":'content_title'})
     most_recent_title = titles[0].text
     mars_complete_data['nasa_news_title'] = most_recent_title
 
-    paragraphs = soup.find_all("div", {"class":'rollover_description_inner'}).text
+    paragraphs = soup.find_all("div", {"class":'rollover_description_inner'})
     most_recent_paragraph = paragraphs[0].text
     mars_complete_data['nasa_news_snippet'] = most_recent_paragraph
 
@@ -39,7 +37,7 @@ def scrape():
     soup = bs(html, 'html.parser')
 
     #Find all images, save first image and display
-    mars_results = mars_soup.find_all('img', class_="BaseImage object-contain")
+    mars_results = soup.find_all('img', class_="BaseImage object-contain")
     image_urls = [i['src'] for i in mars_results]
     featured_image_url = image_urls[0]
     mars_complete_data['featured_image'] = featured_image_url
@@ -100,4 +98,11 @@ def scrape():
     final_hemisphere_data = dict(zip(hemisphere_titles, final_jpg_urls))
     mars_complete_data['mars_hemispheres'] = final_hemisphere_data
 
+    # Close the browser after scraping
+    browser.quit()
+
     return mars_complete_data
+
+#Debugged this updated code for my .py file by running through terminal with the below script
+# mars_data = scrape()
+# print(mars_data)
