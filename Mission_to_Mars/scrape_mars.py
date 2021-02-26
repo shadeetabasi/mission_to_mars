@@ -49,7 +49,7 @@ def scrape():
     mars_facts_df = mars_facts_tables[0]
     updated_df = mars_facts_df.rename(columns={0: "Fact", 1: "Value"})
     #Save df to html string
-    html_table = updated_df.to_html()
+    html_table = updated_df.to_html(index = False)
     #Clean up table
     final_html_table = html_table.replace('\n', '')
     mars_complete_data['mars_facts_table'] = final_html_table
