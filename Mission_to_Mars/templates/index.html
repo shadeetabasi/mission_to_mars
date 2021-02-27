@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <!--Navbar Bootstrap Component-->
+    <!--Navbar Bootstrap/Jumbotron Component-->
     <div class="container">
         <div class="jumbotron text-center">
             <h1 class="display-4">Mission to Mars</h1>
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <!---Mars News scraping-->
+    <!---Mars News Scraping-->
     <div class="container">
         <div class='row'>
             <h2>Latest Mars News</h2>
@@ -33,29 +33,26 @@
         </div>
     </div>
 
-    <!---Mars Featured Image-->
+    <!-- TeSTING -->
     <div class="container">
-        <div class='row'>
-            <h2>Featured Mars Image</h2>
-            <img src="{{mars.featured_image}}" style="max-width:100%; max-height: auto;" alt="mars image">
-        </div>
-    </div>
-          <!-- Table -->
-    <div class="container">
-        <div class='row'>
-            <div class="col-lg-8 col-md-8 col-sm-6 col-xm-12">
-          <h2>Mars Facts</h2>
-          <div>
+        <div class="row">
+            <div class="col">
+                <h2>Featured Mars Image</h2>
+                <img src="{{mars.featured_image}}" style="max-width:100%; max-height: auto;" alt="mars image">
+            </div>
+        <div class="col">
+            <h2>Mars Facts</h2>
+            <div>
               {{ mars.mars_facts_table  | safe}}
             </div>
-
         </div>
-      </div>
-    </div><!---container for image and table closed-->
+  </div>
+    
+    
     <div class="container">
         <div class='row'>
-          <div class="col-lg-8 col-md-8 col-sm-6 col-xm-12">
             <h2>Mars Hemispheres</h2>
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xm-12">
                 <div class="row">
                     {% for item in mars.mars_hemispheres %}
                     <h3>{{item.hemisphere_title}} </h3>
