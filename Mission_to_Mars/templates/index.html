@@ -33,31 +33,34 @@
         </div>
     </div>
 
-    <!-- TeSTING -->
+    <!-- Mars Featured Image & Facts -->
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2>Featured Mars Image</h2>
-                <img src="{{mars.featured_image}}" style="max-width:100%; max-height: auto;" alt="mars image">
-            </div>
+                <div class="col-12 col-md-8">
+                    <h2>Featured Mars Image</h2>
+                    <img src="{{mars.featured_image}}" alt="mars image">
+                </div>
+            </div>   
         <div class="col">
             <h2>Mars Facts</h2>
             <div>
               {{ mars.mars_facts_table  | safe}}
             </div>
         </div>
-  </div>
+    </div>
     
-    
+    <!-- Hemisphere -->
     <div class="container">
         <div class='row'>
             <h2>Mars Hemispheres</h2>
-            <div class="col-lg-8 col-md-8 col-sm-6 col-xm-12">
                 <div class="row">
-                    {% for item in mars.mars_hemispheres %}
-                    <h3>{{item.hemisphere_title}} </h3>
-                    <img src="{{item.final_jpg_url}}" width=400px alt="Mars Hemispheres"> 
-                    {% endfor %}
+                    <div class="col">
+                        <div class="col-12 col-md-8">
+                        {% for item in mars.mars_hemispheres %}
+                        <h3>{{item.hemisphere_title}} </h3>
+                        <img src="{{item.final_jpg_url}}" width=400px alt="Mars Hemispheres"> 
+                        {% endfor %}
                 </div>
         </div>
     </div>
@@ -69,7 +72,7 @@
     </div>
 
 
-  </div> <!---body->container closed-->
+  </div>
 </body>
 
 </html>
