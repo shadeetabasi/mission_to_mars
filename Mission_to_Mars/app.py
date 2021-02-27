@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, jsonify
 from flask_pymongo import PyMongo
 import scrape_mars
 import json
+from pprint import pprint
 
 # Create an instance of Flask
 app = Flask(__name__)
@@ -15,6 +16,14 @@ def home():
     print("Welcome to the Mars Data Page!")
     # Find one record of data from the mongo database
     mars_data = mongo.db.mission_to_mars.find_one()
+    new_hemispheres = [
+        {"hemisphere_title": k, 
+        "final_jpg_url":v} for 
+        k,v in mars_data["mars_hemispheres"].items()
+        ]
+    mars_data["mars_hemispheres"] = new_hemispheres
+    print(mars_data["mars_hemispheres"])
+
 
     # Return template and data
     return render_template("index.html", mars=mars_data)

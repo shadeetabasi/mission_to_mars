@@ -3,16 +3,26 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Costa Rica Weather</title>
+  <title>Mission to Mars</title>
+
+  <!-- Responsive MOBILE shrink to fit -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-  
+
+<body>
+    <!--Navbar Bootstrap Component-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">Mission to Mars</a>
+        <!-- Make nav grey and add button to create new data!!! -->
+    </nav>
+
     <!---Mars News scraping-->
     <div class="container">
         <h2>Latest Mars News</h2>
-        <h4 style="color:aqua">{{ mars.nasa_news_title }}</h4>
+        <h4>{{ mars.nasa_news_title }}</h4>
         <p>{{ mars.nasa_news_snippet }}</p>
     </div>
 
@@ -32,21 +42,20 @@
         </div>
       </div>
     </div><!---container for image and table closed-->
-    <h2 style="padding-top:30px; text-align: center;">Mars Hemispheres</h2>
-    <div class='card-deck'>
-      <div class='col-md-12'>
-          <div class="row">
-              {% for item in mars.mars_hemispheres %}
-              <div class="col-md-6">
-                  <div class="card text-white bg-dark" style="margin: 30px;">
-                      <img class="card-img-top" src="{{item.img_url}}" />
-                      <div class="card-body">
-                          <p class="card-text">Title: {{ item.title }}</p>
-                      </div>
-                  </div>
-              </div>
-              {% endfor %}
-          </div>
+    <div class="container">
+        <div class='row'>
+          <div class="col-lg-8 col-md-8 col-sm-6 col-xm-12">
+            <h2>Mars Hemispheres</h2>
+                <div class="row">
+                    {% for item in mars.mars_hemispheres %}
+                    <p>Title: {{item.hemisphere_title}} </p>
+                    <img src="{{item.final_jpg_url}}" width=100px alt="Mars Hemispheres"> 
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+                    
+    </div>
               
 
       </div>

@@ -2,6 +2,7 @@ from splinter import Browser
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 import time
+import requests
 
 def init_browser():
     #Find a way to check this to ensure this is the right path???
@@ -17,8 +18,10 @@ def scrape():
     browser.visit(url)
 
     #create html object and parse with bs
+     # Retrieve page with the requests module
+    response = requests.get(url)
     html = browser.html
-    soup = bs(html, "html.parser")
+    soup = bs(response.text, 'html.parser')
 
     ## 1. LATEST MARS NEWS: scrape Mars latest news and snippeets and isolate most recent title + paragraph
     titles = soup.find_all("div", {"class":'content_title'})
@@ -61,7 +64,7 @@ def scrape():
     soup = bs(html, 'html.parser')
 
     # Set open lists
-    hemisphere_urls= soup.find_all('div', class_='item')
+    hemisphere_urls = soup.find_all('div', class_='item')
     hemisphere_titles = []
     img_urls = []
     img_urls_list = []
