@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <!-- Set title -->
   <title>Mission to Mars</title>
 
   <!-- Responsive MOBILE shrink to fit -->
@@ -14,26 +15,35 @@
 
 <body>
     <!--Navbar Bootstrap Component-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">Mission to Mars</a>
-        <!-- Make nav grey and add button to create new data!!! -->
-    </nav>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Mission to Mars</h1>
+            <p class="lead">Welcome to a page all about Mars! Please click the button below to begin scraping new data.</p>
+            <hr class="my-4">
+            <a class="btn btn-primary" href="http://127.0.0.1:5000/scrape" role="button">Scrape New Data</a>
+        </div>
+    </div>
 
     <!---Mars News scraping-->
     <div class="container">
-        <h2>Latest Mars News</h2>
-        <h4>{{ mars.nasa_news_title }}</h4>
-        <p>{{ mars.nasa_news_snippet }}</p>
+        <div class='row'>
+            <h2>Latest Mars News</h2>
+            <h4>{{ mars.nasa_news_title }}</h4>
+            <p>{{ mars.nasa_news_snippet }}</p>
+        </div>
     </div>
 
+    <!---Mars Featured Image-->
     <div class="container">
-      <div class='row'>
-        <div class="col-lg-8 col-md-8 col-sm-6 col-xm-12">
-        <h2>Featured Mars Image</h2>
-        <img src="{{mars.featured_image}}" style="max-width:100%; max-height: auto;" alt="mars image">
-    
+        <div class='row'>
+            <h2>Featured Mars Image</h2>
+            <img src="{{mars.featured_image}}" style="max-width:100%; max-height: auto;" alt="mars image">
+        </div>
+    </div>
           <!-- Table -->
-          <br>
+    <div class="container">
+        <div class='row'>
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xm-12">
           <h2>Mars Facts</h2>
           <div>
               {{ mars.mars_facts_table  | safe}}
@@ -48,8 +58,8 @@
             <h2>Mars Hemispheres</h2>
                 <div class="row">
                     {% for item in mars.mars_hemispheres %}
-                    <p>Title: {{item.hemisphere_title}} </p>
-                    <img src="{{item.final_jpg_url}}" width=100px alt="Mars Hemispheres"> 
+                    <h3>{{item.hemisphere_title}} </h3>
+                    <img src="{{item.final_jpg_url}}" width=400px alt="Mars Hemispheres"> 
                     {% endfor %}
                 </div>
         </div>
